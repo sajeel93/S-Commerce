@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { motion } from "framer-motion";
+import { navVariants } from "../../../utils/motion";
 
 const DefaultLayout = ({ children }) => {
     return (
@@ -13,22 +15,27 @@ const DefaultLayout = ({ children }) => {
                             <div className="flex items-center md:order-2">
                                 <button>search</button>
                             </div>
-                            <div
-                                className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
-                                id="mobile-menu-2">
-                                <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-                                    <li>
-                                        <Link href="/" aria-label="Home">
-                                            Home
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href="/" aria-label="About">
-                                            About
-                                        </Link>
-                                    </li>
-                                </ul>
-                            </div>
+                            <motion.nav
+                                variants={navVariants}
+                                initial="hidden"
+                                whileInView="show">
+                                <div
+                                    className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+                                    id="mobile-menu-2">
+                                    <ul className="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                                        <li>
+                                            <Link href="/" aria-label="Home">
+                                                Home
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/" aria-label="About">
+                                                About
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </motion.nav>
                         </div>
                     </nav>
                 </header>
